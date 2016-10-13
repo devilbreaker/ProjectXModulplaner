@@ -4,6 +4,7 @@ package zes.projectx.data.projectxmodulplaner.SourceFiles;
  * Created by Robocop on 23.06.2016.
  */
 public class Subject {
+    private int id;
     private String name;
     private String kuerzel;
     private int cp;
@@ -13,22 +14,26 @@ public class Subject {
     private int aUe;
     private double note;
     private String site;
+    private String uesite;
     private char bereich;
 
 
     /**
      * Konstruktor für bestandene  Fächer, da die Note mit eingetragen wird
+     * @param id
      * @param name
      * @param kuerzel
      * @param cp
      * @param prof
      * @param aUe
      * @param site
+     * @param ueSite
      * @param bereich
      * @param semester
      * @param note
      */
-    public Subject(String name, String kuerzel, int cp, String prof, int aUe, String site, char bereich, int semester, double note) {
+    public Subject(int id,String name, String kuerzel, int cp, String prof, int aUe, String site, String ueSite, char bereich, int semester, double note) {
+        this.id = id;
         this.name = name;
         this.kuerzel = kuerzel;
         this.cp = cp;
@@ -36,6 +41,7 @@ public class Subject {
         this.aUe = aUe;
         this.note = note;
         this.site = site;
+        this.uesite = ueSite;
         this.bereich = bereich;
         this.sem = semester;
         this.status = (note == 0) ? false : true;
@@ -43,16 +49,19 @@ public class Subject {
 
     /**
      * Konstruktor für Fächer, die aktuell belegt werden oder noch nicht belegt wurden
+     * @param id
      * @param name
      * @param kuerzel
      * @param cp
      * @param prof
      * @param aUe
      * @param site
+     * @param uesite
      * @param bereich
      * @param semester
      */
-    public Subject(String name, String kuerzel, int cp, String prof, int aUe, String site, char bereich, int semester) {
+    public Subject(int id,String name, String kuerzel, int cp, String prof, int aUe, String site,String uesite, char bereich, int semester) {
+        this.id = id;
         this.name = name;
         this.kuerzel = kuerzel;
         this.cp = cp;
@@ -60,12 +69,18 @@ public class Subject {
         this.aUe = aUe;
         this.note = 0;
         this.site = site;
+        this.uesite = uesite;
         this.bereich = bereich;
         this.sem = semester;
         this.status = (note == 0) ? false : true;
     }
 
 
+    @Override
+    public String toString(){
+        String s = ":";
+        return id+s+name+s+kuerzel+s+cp+s+prof+s+aUe+s+site+s+uesite+s+bereich+s+note;
+    }
 
     //_____________________GETTER + SETTER - METHODEN __________________________________________________//
 

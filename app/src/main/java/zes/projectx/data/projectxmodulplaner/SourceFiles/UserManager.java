@@ -23,7 +23,29 @@ public class UserManager {
         allsubjects = new ArrayList<Subject>();
     }
 
+    public ArrayList<Subject> get(String x){
+        if (x.equals("ALL"))
+            return allsubjects;
 
+        if (x.equals("MY")) return mysubjects;
+
+        if(x.equals("NOUSE")){
+            ArrayList<Subject> unbelegt = new ArrayList<Subject>();
+            for(Subject sub: allsubjects){
+                if(!mysubjects.contains(sub)){
+                    unbelegt.add(sub);
+                }
+            }
+            return unbelegt;
+        }
+
+        else
+            return null;
+    }
+
+    public User getUser(){
+        return user;
+    }
     /**
      * gibt eine Instanz des aktuellen UserManagers zurück
      * Diese Methode dient zum Zugriff auf den Manager von allen Klassen
