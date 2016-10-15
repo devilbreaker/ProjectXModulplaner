@@ -3,6 +3,7 @@ package zes.projectx.data.projectxmodulplaner.SourceFiles;
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -48,6 +49,7 @@ public class MainParser extends AsyncTask<Context, User, Boolean>{
             readInternaltStorage(fileReader);
 
             saveLogCat(con);
+            Log.d("Parser", "new File created !!");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -61,11 +63,12 @@ public class MainParser extends AsyncTask<Context, User, Boolean>{
     private void readInternaltStorage(BufferedReader file) throws IOException {
 
 
-        ArrayList<Subject> mysubs = UserManager.getInstance().get("MY");
+       // ArrayList<Subject> mysubs = UserManager.getInstance().get("MY");
         ArrayList<Subject> all = UserManager.getInstance().get("ALL");
 
 
         String zeile="";
+        zeile=file.readLine();
         while(null!=(zeile=file.readLine())){        //Solange die Zeile nicht null ist, lies die Daten
             //IDEE: Leg die Daten erst lokal ab, danach füg sie in das Handy auf ROOT
             String[] split=zeile.split(";");                //hier wird die Zeile zerlegt als Trennzeichen ;
@@ -81,13 +84,49 @@ public class MainParser extends AsyncTask<Context, User, Boolean>{
             String uesite = split[7];
             char bereich = split[8].charAt(0);
             int sem = new Integer (split[9]);
-            double note = new Double (split[10]);
+            double note = split[10].contains("N")? 0:new Double (split[10]);
             Subject sub = new Subject(id,name,kuerzel,cp,prof,aUe,site,uesite,bereich,sem,note);
-            mysubs.add(sub);
+            //mysubs.add(sub);
             all.add(sub);
         }
 
     }
+
+    private void readInternaltStorageFor(BufferedReader file, String activ) throws IOException {
+
+        ArrayList<Subject> mysubs = UserManager.getInstance().get("MY");
+        ArrayList<Subject> all = UserManager.getInstance().get("ALL");
+
+
+        String zeile="";
+        zeile=file.readLine();
+        while(null!=(zeile=file.readLine())){        //Solange die Zeile nicht null ist, lies die Daten
+            //IDEE: Leg die Daten erst lokal ab, danach füg sie in das Handy auf ROOT
+
+            if(zeile.equals("end") || zeile.equals("EndData")) return;
+            Log.d("ok2", zeile);
+            String[] split=zeile.split(":");                //hier wird die Zeile zerlegt als Trennzeichen ;
+
+            //______GEPARSTE DATEN_______//
+            int id = new Integer(split[0]);
+            String name = split[1];
+            String kuerzel = split[2];
+            int cp = new Integer(split[3]);
+            String prof = split[4];
+            int aUe = new Integer (split[5]);
+            String site = split[6];
+            String uesite = split[7];
+            char bereich = split[8].charAt(0);
+            // int sem = new Integer (split[9]);
+            double note = split[9].contains("N")? 0:new Double (split[9]);
+            Subject sub = new Subject(id,name,kuerzel,cp,prof,aUe,site,uesite,bereich,1,note);
+            if(activ.equals("AktiveFaecher"))mysubs.add(sub);
+            all.add(sub);
+        }
+
+    }
+
+
 
 
     /**
@@ -102,27 +141,25 @@ public class MainParser extends AsyncTask<Context, User, Boolean>{
             context.deleteFile("logcat.txt");
             outputStream = context.openFileOutput("logcat.txt", Context.MODE_PRIVATE);
 
-            outputStream.write(u.getName().getBytes());
-            outputStream.write((""+u.getSemester()).getBytes());
+            outputStream.write((u.getName()+ ":"+ u.getSemester() + "\n").getBytes());
 
-            outputStream.write("AktiveFaecher".getBytes());
+            outputStream.write(("AktiveFaecher"+"\n").getBytes());
             for(Subject x: all){
-                String out = x.toString();
+                String out = x.toString() + "\n";
                 outputStream.write(out.getBytes());
             }
-            outputStream.write("end".getBytes());
+            outputStream.write(("end"+"\n").getBytes());
 
-            outputStream.write("InaktiveFaecher".getBytes());
+            outputStream.write(("InaktiveFaecher"+"\n").getBytes());
             for(Subject sub: UserManager.getInstance().get("NOUSE")){
-                String out = sub.toString();
+                String out = sub.toString() + "\n";
                 outputStream.write(out.getBytes());
             }
-            outputStream.write("end".getBytes());
+            outputStream.write(("end"+"\n").getBytes());
             outputStream.write("EndData".getBytes());
             outputStream.flush();
             outputStream.close();
-
-
+            Log.d("Parser", "saved Data !!");
         } catch (IOException e) {
 
         }
@@ -136,17 +173,41 @@ public class MainParser extends AsyncTask<Context, User, Boolean>{
      */
     public void readLogcat(Context context){
         FileInputStream inputStream = null;
-        User u = UserManager.getInstance().getUser();
-
+        User u = new User();
 
         try {
+            //context.deleteFile("logcat.txt");
             inputStream = context.openFileInput("logcat.txt");
             BufferedReader fileReader= new BufferedReader(new InputStreamReader(inputStream));
-            readInternaltStorage(fileReader);
+            String zeile="";
+            zeile=fileReader.readLine();
+            Log.d("ok", zeile);
 
+            while(null!=(zeile=fileReader.readLine())){
+                Log.d("ok2", zeile);
+                switch(zeile){
+                    case "AktiveFaecher":
+                        readInternaltStorageFor(fileReader,"AktiveFaecher");
+                        break;
 
+                    case "InaktiveFaecher":
+                        readInternaltStorageFor(fileReader,"InaktiveFaecher");
+                        break;
+
+                    case "Name":
+                        String [] splitted = zeile.split(":");
+                        u.setName(splitted[1]);
+                        new UserManager(u);
+                        break;
+
+                    case "EndData":
+                        Log.d("Parser", "readdata from InternalStorage succesfull !!");
+                        return;
+                }
+            }
         } catch (FileNotFoundException e) {
             // Wenn "openFileInput" die datei nicht gefunden hat, wird er sie erzeugen, aber eine Exception auswerfen
+            Log.d("Parser", "There is no such a logcat file!!");
             createLogCat(u,context);
 
         } catch (IOException e) {

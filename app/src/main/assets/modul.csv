@@ -1,16 +1,16 @@
 ID;Name;Kürzel;Cps;prof;aUe;web;webue;bereich;Semester;Note
-1;Wirtschaftsinformatik;WI;5;prof.dr.Minor;0;;;V;1;\N
-2;Stochchastik für Informatiker;M3;9;Prof.Dr.Walkobinger;0;;;B;1;\N
-3;Praktikum Grundlagen der Informatik;Prg 3;8;Diplom. Inf. Gleim;0;;;B;1;\N
-4;Analysis und lineare Algebra ;M1;9;\N;0;;;B;1;\N
-5;Theoretische Informatik 1;GL1;10;Prof. Dr. Meyer;0;;;B;1;\N
-6;Human Computer Interaction;HCI;6;Prof. Dr. Krömker;0;;;V;1;\N
-7;Hochleistungrechenarchitektur;HRZ;6;Prof.Dr.Lindenstrud;0;;;V;1;\N
-8;Grundlagen der Hardwaresysteme;HWR Prak;4;Prof.dr.Brinkschulter;0;;;B;1;\N
-9;Einführung in die funktionale Programmierung ;EFP;5;Prof.Dr.Schmitd-Strauß;0;;;V;1;\N
-10;Diskrete Modelierung;DM;9;Prof.Dr.Schnitger;0;;;B;1;\N
-11;Entwurf Heterogener Systeme ;EHS;6;Prof.Diplo.Hedrich;0;;;V;1;\N
-12;Approsimationsalghoritmen ;Approx;8;Dr.Ing.Kovac;0;;;B;1;\N
-13;Alghorithmen und Komplexität;AK;5;Prof.Dr.Schnitger;0;;;V;1;\N
-14;Computer Architekturs;CA;6;prof.Dr.Brinkschulter;0;;;V;1;\N
-15;Systemarchitekturen;Syso;5;Dr. Pache ;0;;;V;1;\N
+1;Wirtschaftsinformatik;WI;5;prof.dr.Minor;0;ww;ww;V;1;0
+2;Stochchastik für Informatiker;M3;9;Prof.Dr.Walkobinger;0;ww;ww;B;1;0
+3;Praktikum Grundlagen der Informatik;Prg 3;8;Diplom. Inf. Gleim;0;ww;ww;B;1;0
+4;Analysis und lineare Algebra ;M1;9;\N;0;ww;ww;B;1;0
+5;Theoretische Informatik 1;GL1;10;Prof. Dr. Meyer;0;ww;ww;B;1;0
+6;Human Computer Interaction;HCI;6;Prof. Dr. Krömker;0;ww;ww;V;1;0
+7;Hochleistungrechenarchitektur;HRZ;6;Prof.Dr.Lindenstrud;0;ww;ww;V;1;0
+8;Grundlagen der Hardwaresysteme;HWR Prak;4;Prof.dr.Brinkschulter;0;ww;ww;B;1;0
+9;Einführung in die funktionale Programmierung ;EFP;5;Prof.Dr.Schmitd-Strauß;0;ww;ww;V;1;0
+10;Diskrete Modelierung;DM;9;Prof.Dr.Schnitger;0;ww;ww;B;1;0
+11;Entwurf Heterogener Systeme ;EHS;6;Prof.Diplo.Hedrich;0;ww;ww;V;1;0
+12;Approsimationsalghoritmen ;Approx;8;Dr.Ing.Kovac;0;ww;ww;B;1;0
+13;Alghorithmen und Komplexität;AK;5;Prof.Dr.Schnitger;0;ww;ww;V;1;0
+14;Computer Architekturs;CA;6;prof.Dr.Brinkschulter;0;ww;ww;V;1;0
+15;Systemarchitekturen;Syso;5;Dr. Pache ;0;ww;ww;V;1;0

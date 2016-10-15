@@ -18,9 +18,10 @@ public class UserManager {
      */
     public UserManager(User x){
         this.user = x;
-        this.usermanager = new UserManager(x);
         mysubjects = new ArrayList<Subject>();
         allsubjects = new ArrayList<Subject>();
+        this.usermanager = this;
+
     }
 
     public ArrayList<Subject> get(String x){
