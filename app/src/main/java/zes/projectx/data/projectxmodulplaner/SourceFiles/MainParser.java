@@ -35,7 +35,7 @@ import java.util.ArrayList;
  * >> BEi Aktive sind sowohl bestandene als auch nicht bestandene aber belegte Fächer drin
  *
  */
-public class MainParser extends AsyncTask<Context, User, Void>{
+public class MainParser extends AsyncTask<Context, User, Boolean>{
     private String dir;
 
     public void createLogCat(User x, Context con){
@@ -156,10 +156,10 @@ public class MainParser extends AsyncTask<Context, User, Void>{
     }
 
     @Override
-    protected Void doInBackground(Context... params) {
+    protected Boolean doInBackground(Context... params) {
         Context context = params[0];
         dir = params[0].getFilesDir().getAbsolutePath();
         readLogcat(context);
-        return null;
+        return true;
     }
 }
