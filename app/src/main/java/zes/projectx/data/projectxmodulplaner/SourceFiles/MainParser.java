@@ -71,20 +71,20 @@ public class MainParser extends AsyncTask<Context, User, Boolean>{
         zeile=file.readLine();
         while(null!=(zeile=file.readLine())){        //Solange die Zeile nicht null ist, lies die Daten
             //IDEE: Leg die Daten erst lokal ab, danach füg sie in das Handy auf ROOT
-            String[] split=zeile.split(";");                //hier wird die Zeile zerlegt als Trennzeichen ;
+            String[] splitted=zeile.split(";");                //hier wird die Zeile zerlegt als Trennzeichen ;
 
             //______GEPARSTE DATEN_______//
-            int id = new Integer(split[0]);
-            String name = split[1];
-            String kuerzel = split[2];
-            int cp = new Integer(split[3]);
-            String prof = split[4];
-            int aUe = new Integer (split[5]);
-            String site = split[6];
-            String uesite = split[7];
-            char bereich = split[8].charAt(0);
-            int sem = new Integer (split[9]);
-            double note = split[10].contains("N")? 0:new Double (split[10]);
+            int id = new Integer(splitted[0]);
+            String name = splitted[1];
+            String kuerzel = splitted[2];
+            int cp = new Integer(splitted[3]);
+            String prof = splitted[4];
+            int aUe = new Integer (splitted[5]);
+            String site = splitted[6];
+            String uesite = splitted[7];
+            char bereich = splitted[8].charAt(0);
+            int sem = new Integer (splitted[9]);
+            double note = splitted[10].contains("N")? 0:new Double (splitted[10]);
             Subject sub = new Subject(id,name,kuerzel,cp,prof,aUe,site,uesite,bereich,sem,note);
             //mysubs.add(sub);
             all.add(sub);
@@ -120,8 +120,8 @@ public class MainParser extends AsyncTask<Context, User, Boolean>{
             // int sem = new Integer (split[9]);
             double note = split[9].contains("N")? 0:new Double (split[9]);
             Subject sub = new Subject(id,name,kuerzel,cp,prof,aUe,site,uesite,bereich,1,note);
-            if(activ.equals("AktiveFaecher"))mysubs.add(sub);
             all.add(sub);
+            if(activ.equals("AktiveFaecher"))mysubs.add(sub);
         }
 
     }
@@ -138,7 +138,7 @@ public class MainParser extends AsyncTask<Context, User, Boolean>{
         ArrayList<Subject> all = UserManager.getInstance().get("ALL");
         User u = UserManager.getInstance().getUser();
         try {
-            context.deleteFile("logcat.txt");
+            //context.deleteFile("logcat.txt");
             outputStream = context.openFileOutput("logcat.txt", Context.MODE_PRIVATE);
 
             outputStream.write((u.getName()+ ":"+ u.getSemester() + "\n").getBytes());
@@ -219,7 +219,6 @@ public class MainParser extends AsyncTask<Context, User, Boolean>{
     @Override
     protected Boolean doInBackground(Context... params) {
         Context context = params[0];
-        dir = params[0].getFilesDir().getAbsolutePath();
         readLogcat(context);
         return true;
     }

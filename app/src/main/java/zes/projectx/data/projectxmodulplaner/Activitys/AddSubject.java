@@ -17,26 +17,37 @@ import zes.projectx.data.projectxmodulplaner.R;
 import zes.projectx.data.projectxmodulplaner.SourceFiles.Subject;
 import zes.projectx.data.projectxmodulplaner.SourceFiles.UserManager;
 
-public class AddSubject extends AppCompatActivity {
+public class AddSubject extends AppCompatActivity implements Runnable{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_subject);
+        Thread t = new Thread(this);
+        t.run();
+        try {
+            t.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void run() {
 
 
-      //  DisplayMetrics dm = new DisplayMetrics();
-      //  getWindowManager().getDefaultDisplay().getMetrics(dm);
+        //  DisplayMetrics dm = new DisplayMetrics();
+        //  getWindowManager().getDefaultDisplay().getMetrics(dm);
 
-      //  int width = dm.widthPixels;
-      //  int height = dm.heightPixels;
+        //  int width = dm.widthPixels;
+        //  int height = dm.heightPixels;
 
-      //  getWindow().setLayout((int )(width*.9), (int) (height*.4));
+        //  getWindow().setLayout((int )(width*.9), (int) (height*.4));
 
         UserManager um = UserManager.getInstance();
-        ArrayList<Subject> all = um.get("NOUSE");
+        ArrayList<Subject> all = um.get("MY");
         int size = all.size();
-        Log.d("Variable", size + "");
+        Log.d("VariableALL", size + "");
 
 
         /*
@@ -70,23 +81,28 @@ public class AddSubject extends AppCompatActivity {
 
 
         for(int i = 0; i < size; i++){
-            TableRow tr = new TableRow(this);
-            tr.setOrientation(LinearLayout.HORIZONTAL);
-            for(int row = 0; row < 3; row ++){
+           // TableRow tr = new TableRow(this);
+           // TableRow.LayoutParams trparam = new TableRow.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            //tr.setOrientation(LinearLayout.HORIZONTAL);
+           // tr.setLayoutParams(trparam);
+           // for(int row = 0; row < 3; row ++){
                 //Wähle Sub aus:
                 Subject sub = all.get(i);
                 // Erzeuge den Button und seine Parameter als WrapContent
                 Button button = new Button(this);
-                ViewGroup.LayoutParams btnparam = new LinearLayoutCompat.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                ViewGroup.LayoutParams btnparam = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                 button.setLayoutParams(btnparam);
                 //Text mit dem Kürzel festlegen:
                 button.setText(sub.getKuerzel());
-                button.setPadding(0,25,0,0);
-                tr.addView(button);
+
+            //    tr.addView(button);
+            tableLayout.addView(button);
             }
-            tableLayout.addView(tr);
-        }
+
+          //  tableLayout.addView(tr);
+       // }
 
         setContentView(tableLayout);
+
     }
 }
