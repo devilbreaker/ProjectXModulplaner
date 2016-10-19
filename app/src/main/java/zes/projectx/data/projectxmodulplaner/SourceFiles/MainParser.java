@@ -62,10 +62,8 @@ public class MainParser extends AsyncTask<Context, User, Boolean>{
      */
     private void readInternaltStorage(BufferedReader file) throws IOException {
 
-
-       // ArrayList<Subject> mysubs = UserManager.getInstance().get("MY");
+ // ArrayList<Subject> mysubs = UserManager.getInstance().get("MY");
         ArrayList<Subject> all = UserManager.getInstance().get("ALL");
-
 
         String zeile="";
         zeile=file.readLine();
@@ -89,14 +87,12 @@ public class MainParser extends AsyncTask<Context, User, Boolean>{
             //mysubs.add(sub);
             all.add(sub);
         }
-
     }
 
     private void readInternaltStorageFor(BufferedReader file, String activ) throws IOException {
 
         ArrayList<Subject> mysubs = UserManager.getInstance().get("MY");
         ArrayList<Subject> all = UserManager.getInstance().get("ALL");
-
 
         String zeile="";
         zeile=file.readLine();
