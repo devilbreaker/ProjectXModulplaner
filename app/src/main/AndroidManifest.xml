@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="zes.projectx.data.projectxmodulplaner">
 
-
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_Internal_STORAGE" />
     <uses-permission android:name="android.permission.READ_Internal_STORAGE" />
@@ -20,8 +19,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activitys.AddSubject"></activity>
-        <activity android:name=".Activitys.LeistungsansichtActivity"></activity>
+        <activity android:name=".Activitys.AddSubject" />
+        <activity android:name=".Activitys.LeistungsansichtActivity" />
+        <activity android:name=".Activitys.PopUp"></activity>
     </application>
 
 </manifest>

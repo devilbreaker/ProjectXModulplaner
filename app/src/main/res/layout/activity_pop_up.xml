@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="#cdebf0">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Modulname  :"
+        android:id="@+id/tvModulname"
+        android:layout_marginLeft="34dp"
+        android:layout_marginStart="34dp"
+        android:layout_marginTop="39dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textStyle="italic"
+        android:id="@+id/modulName"
+        android:layout_marginLeft="27dp"
+        android:layout_marginStart="27dp"
+        android:layout_alignTop="@+id/tvModulname"
+        android:layout_toRightOf="@+id/tvModulname"
+        android:layout_toEndOf="@+id/tvModulname" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Professor :"
+        android:id="@+id/profText"
+        android:layout_below="@+id/tvModulname"
+        android:layout_alignLeft="@+id/tvModulname"
+        android:layout_alignStart="@+id/tvModulname"
+        android:layout_marginTop="46dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="CP : "
+        android:id="@+id/cpText"
+        android:layout_below="@+id/profText"
+        android:layout_alignLeft="@+id/profText"
+        android:layout_alignStart="@+id/profText"
+        android:layout_marginTop="56dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textStyle="italic"
+        android:id="@+id/profName"
+        android:layout_alignTop="@+id/profText"
+        android:layout_alignLeft="@+id/modulName"
+        android:layout_alignStart="@+id/modulName" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textStyle="italic"
+        android:id="@+id/cpCount"
+        android:layout_alignTop="@+id/cpText"
+        android:layout_alignLeft="@+id/profName"
+        android:layout_alignStart="@+id/profName" />
+</RelativeLayout>
+

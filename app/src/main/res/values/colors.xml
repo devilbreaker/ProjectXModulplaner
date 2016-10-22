@@ -3,4 +3,12 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="bluekind">#43428a</color>
+    <color name="ozeandunkelblau" >#0f3067</color>
+    <color name="anderesblau">#445883</color>
+    <color name="schwarzblau">#060f23</color>
+    <color name="hellgrau">#cfcfcf</color>
+    <color name="durchschnittsnotenbackground">#0e0cc6</color>
+    <color name="testblaugruen">#93c3f0</color>
+    <color name="bej">#f8eab5</color>
 </resources>

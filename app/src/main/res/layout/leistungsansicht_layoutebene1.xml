@@ -9,7 +9,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Name :"
-        android:id="@+id/textView4"
+        android:id="@+id/profName"
         android:textColor="@color/schwarzblau"
         android:textSize="20dp"
         android:layout_weight="0.06"
@@ -24,7 +24,7 @@
         android:id="@+id/textView5"
         android:textColor="@color/schwarzblau"
         android:textSize="20sp"
-        android:layout_alignTop="@+id/textView4"
+        android:layout_alignTop="@+id/profName"
         android:layout_toRightOf="@+id/textView6"
         android:layout_toEndOf="@+id/textView6" />
 
@@ -64,7 +64,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_above="@+id/relativeLayout2"
-        android:layout_below="@+id/textView4"
+        android:layout_below="@+id/profName"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:id="@+id/includelast" />
@@ -94,8 +94,8 @@
         android:layout_marginLeft="39dp"
         android:layout_marginStart="39dp"
         android:layout_above="@+id/includelast"
-        android:layout_toRightOf="@+id/textView4"
-        android:layout_toEndOf="@+id/textView4" />
+        android:layout_toRightOf="@+id/profName"
+        android:layout_toEndOf="@+id/profName" />
 
     <TextView
         android:layout_width="wrap_content"
