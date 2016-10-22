@@ -21,6 +21,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Activitys.AddSubject"></activity>
+        <activity android:name=".Activitys.LeistungsansichtActivity"></activity>
     </application>
 
 </manifest>
