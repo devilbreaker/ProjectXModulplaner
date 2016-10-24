@@ -18,6 +18,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import zes.projectx.data.projectxmodulplaner.R;
+import zes.projectx.data.projectxmodulplaner.SourceFiles.LongClickButton;
 import zes.projectx.data.projectxmodulplaner.SourceFiles.Subject;
 import zes.projectx.data.projectxmodulplaner.SourceFiles.UserManager;
 
@@ -56,28 +57,8 @@ public class AddSubject extends AppCompatActivity implements Runnable{
 
             tableLayout.addView(tableRow);
             for(int col = 0; col < COL_NUM; col++){
-                final Button button = new Button(this);
-                button.setLayoutParams(new TableRow.LayoutParams(
-                        350,
-                        350,
-                        1.0f ));
-                button.setPadding(0,0,0,0);
-                button.setText(allsub.get(i).getKuerzel());
-                button.setTextSize(30);
-                button.setTypeface(Typeface.DEFAULT_BOLD);
+                final LongClickButton button = new LongClickButton(this, allsub.get(i));
                 i++;
-
-                button.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        if(button.getTypeface().getStyle() == Typeface.BOLD){
-
-                            Toast.makeText(tableLayout.getContext(), button.getText() + " ausgewählt", Toast.LENGTH_SHORT).show();
-                            button.setTypeface(Typeface.SANS_SERIF);
-                        }
-                        else{button.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));}
-                    }
-                });
                 tableRow.addView(button);
 
             }
