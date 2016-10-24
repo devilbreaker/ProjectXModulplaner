@@ -4,15 +4,12 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/anzeige"
-            android:icon="@drawable/ic_menu_camera"
             android:title="Meine Anzeige" />
         <item
             android:id="@+id/addSub"
-            android:icon="@drawable/ic_menu_gallery"
             android:title="+" />
         <item
             android:id="@+id/leistung"
-            android:icon="@drawable/ic_menu_slideshow"
             android:title="Meine Leistung" />
 
         <item
@@ -26,11 +23,9 @@
         <menu>
             <item
                 android:id="@+id/setting"
-                android:icon="@drawable/ic_menu_share"
                 android:title="Setting" />
             <item
                 android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
                 android:title="Close" />
         </menu>
     </item>

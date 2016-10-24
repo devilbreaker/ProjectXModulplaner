@@ -20,7 +20,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".Activitys.AddSubject" />
-        <activity android:name=".Activitys.LeistungsansichtActivity" />
         <activity android:name=".Activitys.PopUp"></activity>
     </application>
 
