@@ -3,6 +3,8 @@ package zes.projectx.data.projectxmodulplaner.Activitys;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import zes.projectx.data.projectxmodulplaner.R;
+
 public class LoginActivity extends AppCompatActivity {
 
     @Override

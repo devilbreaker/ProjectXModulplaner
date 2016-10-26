@@ -1,6 +1,7 @@
 package zes.projectx.data.projectxmodulplaner.SourceFiles;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.AssetManager;
 import android.os.AsyncTask;
 import android.util.Log;
@@ -14,6 +15,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+
+import zes.projectx.data.projectxmodulplaner.Activitys.LoginActivity;
 
 /**
  * Created by Robocop on 09.10.2016.
@@ -204,7 +207,8 @@ public class MainParser extends AsyncTask<Context, User, Boolean>{
         } catch (FileNotFoundException e) {
             // Wenn "openFileInput" die datei nicht gefunden hat, wird er sie erzeugen, aber eine Exception auswerfen
             Log.d("Parser", "There is no such a logcat file!!");
-            createLogCat(u,context);
+            Intent intent = new Intent(context.getApplicationContext(), LoginActivity.class);
+            context.startActivity(intent);
 
         } catch (IOException e) {
             //Wenn etwas mit dem FileReader selbst nicht stimmt, sollte diese Exception das Programm abbrechen

@@ -17,8 +17,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        User u = new User("Saif Samir", 5);
-        UserManager manager = new UserManager(u);
+        //User u = new User("Saif Samir", 5);
+        //UserManager manager = new UserManager(u);
         MainParser p = new MainParser();
         p.execute(this.getApplicationContext());
         Intent in = new Intent(getApplicationContext(),AddSubject.class);
