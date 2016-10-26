@@ -20,7 +20,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".Activitys.AddSubject" />
-        <activity android:name=".Activitys.PopUp"></activity>
+        <activity android:name=".Activitys.PopUp" />
+        <activity android:name=".Activitys.LoginActivity"></activity>
     </application>
 
 </manifest>
