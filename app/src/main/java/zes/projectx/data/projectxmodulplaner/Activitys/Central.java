@@ -13,7 +13,8 @@ import java.util.ArrayList;
 import zes.projectx.data.projectxmodulplaner.R;
 import zes.projectx.data.projectxmodulplaner.SourceFiles.Subject;
 import zes.projectx.data.projectxmodulplaner.SourceFiles.UserManager;
-
+//TODO füge Erdemsklasse ein !
+//TODO Navigationsbar einbauen
 public class Central extends AppCompatActivity {
 
 

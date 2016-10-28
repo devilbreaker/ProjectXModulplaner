@@ -1,5 +1,6 @@
 package zes.projectx.data.projectxmodulplaner.Activitys;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
@@ -24,21 +26,45 @@ import zes.projectx.data.projectxmodulplaner.SourceFiles.LongClickButton;
 import zes.projectx.data.projectxmodulplaner.SourceFiles.Subject;
 import zes.projectx.data.projectxmodulplaner.SourceFiles.UserManager;
 
+
+/*TODO
+1- Checke ob die ausgewählten Fächer erzeugt werden ! Dafür muss der Parser aktiviert werden nachdem hacken anklicken.
+2- größe des Hackens anpassen
+3- Entfernen des doppelten Fehlers
+4- kennzeichnungsfarbe für ausgewählte Fächer ?
+5- größe der Buttons verkleinern
+*/
 public class AddSubject extends AppCompatActivity implements Runnable{
     private ScrollView sc;
+    private ImageButton ok;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.addsubjectovercontent);
+        ok = (ImageButton) findViewById(R.id.button2);
+
+        ok.setVisibility(View.INVISIBLE);
+        ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent central = new Intent(getApplicationContext(), Central.class);
+                startActivity(central);
+                finish();
+            }
+        });
         Thread t = new Thread(this);
-        t.run();
-        //sc = (ScrollView) findViewById(R.id.)
         try {
+            t.start();
             t.join();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+
+    public void subjectClicked(){
+            ok.setVisibility((UserManager.getInstance().getCountStartUpSubjects() > 0) ? View.VISIBLE:View.INVISIBLE);
     }
 
     @Override
@@ -66,5 +92,6 @@ public class AddSubject extends AppCompatActivity implements Runnable{
 
             }
         }
+
     }
 }

@@ -10,6 +10,7 @@ public class UserManager {
     private User user;
     private ArrayList<Subject> mysubjects;
     private ArrayList<Subject> allsubjects;
+    private int countStartUpSubjects;
 
 
     /**
@@ -21,7 +22,7 @@ public class UserManager {
         mysubjects = new ArrayList<Subject>();
         allsubjects = new ArrayList<Subject>();
         this.usermanager = this;
-
+        this.countStartUpSubjects = 0;
     }
 
     public ArrayList<Subject> get(String x){
@@ -96,4 +97,15 @@ public class UserManager {
         return getCreditPoints(allcounted);
     }
 
+    public int getCountStartUpSubjects(){
+        return countStartUpSubjects;
+    }
+
+    public void addCluntStartSubject(){
+        this.countStartUpSubjects++;
+    }
+
+    public void removeStartSubject(){
+        this.countStartUpSubjects--;
+    }
 }

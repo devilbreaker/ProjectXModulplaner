@@ -22,6 +22,7 @@
         <activity android:name=".Activitys.AddSubject" />
         <activity android:name=".Activitys.PopUp" />
         <activity android:name=".Activitys.LoginActivity"></activity>
+        <activity android:name=".Activitys.Central"></activity>
     </application>
 
 </manifest>
