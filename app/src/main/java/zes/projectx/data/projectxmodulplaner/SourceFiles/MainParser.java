@@ -174,6 +174,7 @@ public class MainParser extends AsyncTask<Context, User, Boolean>{
         FileInputStream inputStream = null;
         User u = new User();
 
+        UserManager manager = new UserManager(u);
         try {
             //context.deleteFile("logcat.txt");
             inputStream = context.openFileInput("logcat.txt");

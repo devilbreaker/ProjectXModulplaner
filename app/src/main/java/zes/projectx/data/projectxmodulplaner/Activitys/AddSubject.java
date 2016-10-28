@@ -9,7 +9,9 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -28,7 +30,7 @@ public class AddSubject extends AppCompatActivity implements Runnable{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_subject);
+        setContentView(R.layout.addsubjectovercontent);
         Thread t = new Thread(this);
         t.run();
         //sc = (ScrollView) findViewById(R.id.)
@@ -41,12 +43,13 @@ public class AddSubject extends AppCompatActivity implements Runnable{
 
     @Override
     public void run() {
-        int i = 0;
 
+        FrameLayout fl = (FrameLayout)findViewById(R.id.framelayout);
+        int i = 0;
         ArrayList<Subject> allsub = UserManager.getInstance().get("ALL");
         final int ROW_NUM = (allsub.size())/3;
         final int COL_NUM = 3;
-        final TableLayout tableLayout = (TableLayout) findViewById(R.id.TableLayout);
+        final TableLayout tableLayout = (TableLayout) fl.findViewById(R.id.TableLayout);
         for(int row = 0; row < ROW_NUM; row++){
 
             TableRow tableRow = new TableRow(this);
