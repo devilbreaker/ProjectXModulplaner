@@ -27,12 +27,12 @@ import zes.projectx.data.projectxmodulplaner.SourceFiles.Subject;
 import zes.projectx.data.projectxmodulplaner.SourceFiles.UserManager;
 
 
-/*TODO
-1- Checke ob die ausgewählten Fächer erzeugt werden ! Dafür muss der Parser aktiviert werden nachdem hacken anklicken.
-2- größe des Hackens anpassen
-3- Entfernen des doppelten Fehlers
-4- kennzeichnungsfarbe für ausgewählte Fächer ?
-5- größe der Buttons verkleinern
+/*
+1-TODO  Checke ob die ausgewählten Fächer erzeugt werden ! Dafür muss der Parser aktiviert werden nachdem hacken anklicken.
+2-TODO größe des Hackens anpassen
+3-TODO Entfernen des doppelten Fehlers
+4-TODO kennzeichnungsfarbe für ausgewählte Fächer ?
+5-TODO größe der Buttons verkleinern
 */
 public class AddSubject extends AppCompatActivity implements Runnable{
     private ScrollView sc;

@@ -18,8 +18,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/login"
         android:id="@+id/logintextView"
-        android:textSize="100dp"
-        android:layout_above="@+id/nametxt"
+        android:textSize="100sp"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="50dp" />
 
@@ -34,10 +33,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
-            android:text="&lt;Name>"
             android:ems="10"
             android:id="@+id/nametxt"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"
+            android:singleLine="false" />
 
         <EditText
             android:layout_width="wrap_content"
@@ -45,7 +44,6 @@
             android:inputType="number"
             android:ems="10"
             android:id="@+id/semestertxt"
-            android:text="&lt;Semester>"
             android:layout_centerVertical="true"
             android:layout_alignLeft="@+id/nametxt"
             android:layout_alignStart="@+id/nametxt" />

@@ -21,8 +21,6 @@ public class MainActivity extends AppCompatActivity {
         //UserManager manager = new UserManager(u);
         MainParser p = new MainParser();
         p.execute(this.getApplicationContext());
-        Intent in = new Intent(getApplicationContext(),AddSubject.class);
-        startActivity(in);
         finish();
     }
 }
