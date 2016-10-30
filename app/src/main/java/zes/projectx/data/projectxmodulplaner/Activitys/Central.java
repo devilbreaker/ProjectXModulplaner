@@ -43,7 +43,7 @@ public class Central extends AppCompatActivity {
             for(int col = 0; col<NUM_COLS; col++){
                 Button button = new Button(this);
                 table.addView(button);
-                x.getKuerzel();
+                button.setText(x.getKuerzel());
             }
         }
     }

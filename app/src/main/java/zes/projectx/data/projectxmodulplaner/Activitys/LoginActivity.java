@@ -9,12 +9,12 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import zes.projectx.data.projectxmodulplaner.R;
+import zes.projectx.data.projectxmodulplaner.SourceFiles.MainParser;
 import zes.projectx.data.projectxmodulplaner.SourceFiles.User;
 import zes.projectx.data.projectxmodulplaner.SourceFiles.UserManager;
 
 /*
     1-TODO Toast einbauen mit: Bitte geben Sie die Daten vollständig ein !
-    2-TODO Testen
 
 */
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
@@ -31,6 +31,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         name.setOnClickListener(this);
         semester.setOnClickListener(this);
+
     }
 
     /**
@@ -44,6 +45,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             User u = new User(name.getText().toString(), new Integer(semester.getText().toString()));
             UserManager manager = new UserManager(u);
             Intent starter = new Intent(getApplicationContext(),AddSubject.class);
+            MainParser parser = new MainParser();
+            parser.createLogCat(u, getApplicationContext());
+            startActivity(starter);
+            finish();
         }
     }
 }

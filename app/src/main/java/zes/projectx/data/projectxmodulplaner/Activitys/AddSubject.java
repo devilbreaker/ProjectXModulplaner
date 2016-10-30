@@ -30,13 +30,13 @@ import zes.projectx.data.projectxmodulplaner.SourceFiles.UserManager;
 /*
 1-TODO  Checke ob die ausgewählten Fächer erzeugt werden ! Dafür muss der Parser aktiviert werden nachdem hacken anklicken.
 2-TODO größe des Hackens anpassen
-3-TODO Entfernen des doppelten Fehlers
-4-TODO kennzeichnungsfarbe für ausgewählte Fächer ?
-5-TODO größe der Buttons verkleinern
+3-TODO kennzeichnungsfarbe für ausgewählte Fächer ?
+4-TODO größe der Buttons verkleinern
 */
 public class AddSubject extends AppCompatActivity implements Runnable{
     private ScrollView sc;
     private ImageButton ok;
+    private Thread t;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,13 +53,8 @@ public class AddSubject extends AppCompatActivity implements Runnable{
                 finish();
             }
         });
-        Thread t = new Thread(this);
-        try {
-            t.start();
-            t.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        t = new Thread(this);
+        t.run();
     }
 
 
@@ -92,6 +87,10 @@ public class AddSubject extends AppCompatActivity implements Runnable{
 
             }
         }
-
+        try {
+            t.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }

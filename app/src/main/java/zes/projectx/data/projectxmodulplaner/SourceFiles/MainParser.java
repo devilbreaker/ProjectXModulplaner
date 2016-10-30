@@ -8,6 +8,7 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -137,12 +138,19 @@ public class MainParser extends AsyncTask<Context, User, Boolean>{
      * @param context
      */
     public void saveLogCat(Context context) {
-        FileOutputStream outputStream = null;
+       // FileOutputStream outputStream = null;
         ArrayList<Subject> all = UserManager.getInstance().get("ALL");
         User u = UserManager.getInstance().getUser();
         try {
+            String path = System.getProperty("user.dir");
+            String path2 = "//src//assets//";
+            File f = new File(path+path2+"ausgabe.txt");
+            f.createNewFile();
+            FileOutputStream outputStream = null;
+            outputStream = new FileOutputStream(f);
+
             //context.deleteFile("logcat.txt");
-            outputStream = context.openFileOutput("logcat.txt", Context.MODE_PRIVATE);
+            //outputStream = context.openFileOutput("logcat.txt", Context.MODE_PRIVATE);
 
             outputStream.write((u.getName()+ ":"+ u.getSemester() + "\n").getBytes());
 
@@ -162,7 +170,7 @@ public class MainParser extends AsyncTask<Context, User, Boolean>{
             outputStream.write("EndData".getBytes());
             outputStream.flush();
             outputStream.close();
-            Log.d("Parser", "saved Data !!");
+            Log.d("Parser", "saved Data in " + f.getAbsolutePath());
         } catch (IOException e) {
 
         }
