@@ -19,15 +19,14 @@ import zes.projectx.data.projectxmodulplaner.SourceFiles.UserManager;
 //TODO Saif Navigationsbar einbauen
 
 public class Central extends AppCompatActivity {
-
-
-    private static final int NUM_ROWS =2 ;
-    private static final int NUM_COLS = 1;
+    private UserManager manager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_central);
+
+        manager = UserManager.getInstance();
 
 
 
@@ -37,8 +36,11 @@ public class Central extends AppCompatActivity {
 
 
     private void populatelayout() {
+        ArrayList<Subject> mysubs = manager.get("ALL");
+        int size = mysubs.size();
         LinearLayout f = (LinearLayout) findViewById(R.id.lin);
-        for(int row = 0; row<NUM_ROWS; row++){
+        for(int row = 0; row<size; row++){
+            Subject sub = mysubs.get(row);
             RelativeLayout ko = new RelativeLayout(this);
             ko.setLayoutParams(new LinearLayout.LayoutParams(
                     RelativeLayout.LayoutParams.MATCH_PARENT,
@@ -51,6 +53,7 @@ public class Central extends AppCompatActivity {
                     RelativeLayout.LayoutParams.WRAP_CONTENT,
                     RelativeLayout.LayoutParams.WRAP_CONTENT,
                     1.0f));
+            button.setText(sub.getKuerzel());
             ko.addView(button);
             TextView text = new TextView(this);
             text.setLayoutParams(new LinearLayout.LayoutParams(
@@ -58,11 +61,11 @@ public class Central extends AppCompatActivity {
                     RelativeLayout.LayoutParams.MATCH_PARENT,
                     1.0f));
             ko.addView(text);
-            text.setText("erdem");
+            text.setText(sub.getName());
             //text.setBackgroundColor(R.color.colorAccent);
             TextView text2 = new TextView(this);
             ko.addView(text2);
-            ko.setBackgroundColor(R.color.colorAccent);
+            ko.setBackgroundColor(getResources().getColor(R.color.colorAccent));
             //text2.setBackgroundColor(R.color.colorAccent);
 
             //f.addView(ko);
