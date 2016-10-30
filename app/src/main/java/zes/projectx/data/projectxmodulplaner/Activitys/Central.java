@@ -15,8 +15,11 @@ import zes.projectx.data.projectxmodulplaner.R;
 import zes.projectx.data.projectxmodulplaner.SourceFiles.Subject;
 import zes.projectx.data.projectxmodulplaner.SourceFiles.UserManager;
 //TODO  Erdem Rahmen für den Relative Layout
+// TODO egal wer: TextView größe anpassen auf Buttonende
 // TODO Zesshan andere Farbe für den RelativeLayout
 //TODO Saif Navigationsbar einbauen
+
+// TODO SPECIAL: Suchfunktion für spezielle Fächer + Reload Activity dadurch aktivieren
 
 public class Central extends AppCompatActivity {
     private UserManager manager;
