@@ -1,5 +1,6 @@
 package zes.projectx.data.projectxmodulplaner.Activitys;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,7 +10,10 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -22,31 +26,51 @@ import zes.projectx.data.projectxmodulplaner.SourceFiles.LongClickButton;
 import zes.projectx.data.projectxmodulplaner.SourceFiles.Subject;
 import zes.projectx.data.projectxmodulplaner.SourceFiles.UserManager;
 
+
+/*
+1-TODO  Checke ob die ausgewählten Fächer erzeugt werden ! Dafür muss der Parser aktiviert werden nachdem hacken anklicken.
+2-TODO größe des Hackens anpassen
+3-TODO kennzeichnungsfarbe für ausgewählte Fächer ?
+4-TODO größe der Buttons verkleinern
+*/
 public class AddSubject extends AppCompatActivity implements Runnable{
     private ScrollView sc;
+    private ImageButton ok;
+    private Thread t;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_subject);
-        Thread t = new Thread(this);
+        setContentView(R.layout.addsubjectovercontent);
+        ok = (ImageButton) findViewById(R.id.button2);
+
+        ok.setVisibility(View.INVISIBLE);
+        ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent central = new Intent(getApplicationContext(), Central.class);
+                startActivity(central);
+                finish();
+            }
+        });
+        t = new Thread(this);
         t.run();
-        //sc = (ScrollView) findViewById(R.id.)
-        try {
-            t.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+    }
+
+
+    public void subjectClicked(){
+            ok.setVisibility((UserManager.getInstance().getCountStartUpSubjects() > 0) ? View.VISIBLE:View.INVISIBLE);
     }
 
     @Override
     public void run() {
-        int i = 0;
 
+        FrameLayout fl = (FrameLayout)findViewById(R.id.framelayout);
+        int i = 0;
         ArrayList<Subject> allsub = UserManager.getInstance().get("ALL");
         final int ROW_NUM = (allsub.size())/3;
         final int COL_NUM = 3;
-        final TableLayout tableLayout = (TableLayout) findViewById(R.id.TableLayout);
+        final TableLayout tableLayout = (TableLayout) fl.findViewById(R.id.TableLayout);
         for(int row = 0; row < ROW_NUM; row++){
 
             TableRow tableRow = new TableRow(this);
@@ -62,6 +86,11 @@ public class AddSubject extends AppCompatActivity implements Runnable{
                 tableRow.addView(button);
 
             }
+        }
+        try {
+            t.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 }

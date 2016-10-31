@@ -1,11 +1,14 @@
 package zes.projectx.data.projectxmodulplaner.SourceFiles;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.AssetManager;
 import android.os.AsyncTask;
 import android.util.Log;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -14,6 +17,9 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+
+import zes.projectx.data.projectxmodulplaner.Activitys.Central;
+import zes.projectx.data.projectxmodulplaner.Activitys.LoginActivity;
 
 /**
  * Created by Robocop on 09.10.2016.
@@ -36,6 +42,8 @@ import java.util.ArrayList;
  * >> BEi Aktive sind sowohl bestandene als auch nicht bestandene aber belegte Fächer drin
  *
  */
+
+// 1- TODO Der PARSER MUSS VOLLSTÄNDIG PER HAND FESTGELEGT WERDEN SODASS ER UNVERÄNDERBAR IST, DAMIT IMPLEMENTIERUNG KORRIGIERT WIRD
 public class MainParser extends AsyncTask<Context, User, Boolean>{
     private String dir;
 
@@ -130,12 +138,19 @@ public class MainParser extends AsyncTask<Context, User, Boolean>{
      * @param context
      */
     public void saveLogCat(Context context) {
-        FileOutputStream outputStream = null;
+       // FileOutputStream outputStream = null;
         ArrayList<Subject> all = UserManager.getInstance().get("ALL");
         User u = UserManager.getInstance().getUser();
         try {
+            String path = System.getProperty("user.dir");
+            String path2 = "//src//assets//";
+            File f = new File(path+path2+"ausgabe.txt");
+            f.createNewFile();
+            FileOutputStream outputStream = null;
+            outputStream = new FileOutputStream(f);
+
             //context.deleteFile("logcat.txt");
-            outputStream = context.openFileOutput("logcat.txt", Context.MODE_PRIVATE);
+            //outputStream = context.openFileOutput("logcat.txt", Context.MODE_PRIVATE);
 
             outputStream.write((u.getName()+ ":"+ u.getSemester() + "\n").getBytes());
 
@@ -155,7 +170,7 @@ public class MainParser extends AsyncTask<Context, User, Boolean>{
             outputStream.write("EndData".getBytes());
             outputStream.flush();
             outputStream.close();
-            Log.d("Parser", "saved Data !!");
+            Log.d("Parser", "saved Data in " + f.getAbsolutePath());
         } catch (IOException e) {
 
         }
@@ -171,8 +186,10 @@ public class MainParser extends AsyncTask<Context, User, Boolean>{
         FileInputStream inputStream = null;
         User u = new User();
 
+        UserManager manager = new UserManager(u);
         try {
-            //context.deleteFile("logcat.txt");
+            //Erdem: TODO nächste Zeile auskommentieren, wenn du Central testen willst
+            context.deleteFile("logcat.txt");
             inputStream = context.openFileInput("logcat.txt");
             BufferedReader fileReader= new BufferedReader(new InputStreamReader(inputStream));
             String zeile="";
@@ -198,14 +215,18 @@ public class MainParser extends AsyncTask<Context, User, Boolean>{
 
                     case "EndData":
                         Log.d("Parser", "readdata from InternalStorage succesfull !!");
+                        Intent intent = new Intent(context.getApplicationContext(), Central.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        context.startActivity(intent);
                         return;
                 }
             }
         } catch (FileNotFoundException e) {
             // Wenn "openFileInput" die datei nicht gefunden hat, wird er sie erzeugen, aber eine Exception auswerfen
             Log.d("Parser", "There is no such a logcat file!!");
-            createLogCat(u,context);
-
+            Intent intent = new Intent(context.getApplicationContext(), LoginActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(intent);
         } catch (IOException e) {
             //Wenn etwas mit dem FileReader selbst nicht stimmt, sollte diese Exception das Programm abbrechen
             e.printStackTrace();

@@ -7,4 +7,5 @@
     <string name="empty_string"></string>
     <string name="title_activity_est_pdf">estPDFAct</string>
     <string name="title_activity_testmterdem">TESTMTERDEM</string>
+    <string name="login">Login</string>
 </resources>

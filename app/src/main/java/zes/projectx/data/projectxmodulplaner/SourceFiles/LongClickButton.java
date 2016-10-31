@@ -4,11 +4,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TableRow;
 import android.widget.Toast;
 
+import zes.projectx.data.projectxmodulplaner.Activitys.AddSubject;
 import zes.projectx.data.projectxmodulplaner.Activitys.PopUp;
 
 /**
@@ -31,7 +33,6 @@ public class LongClickButton extends Button implements View.OnClickListener, Vie
                 350,
                 1.0f ));
         this.setPadding(0,0,0,0);
-
         this.setTypeface(Typeface.DEFAULT_BOLD);
         assert this != null;
 
@@ -46,7 +47,7 @@ public class LongClickButton extends Button implements View.OnClickListener, Vie
         this.setTextSize(30);
         this.setLayoutParams(new TableRow.LayoutParams(
                 350,
-                350,
+                325,
                 1.0f ));
         this.setPadding(0,0,0,0);
 
@@ -62,7 +63,7 @@ public class LongClickButton extends Button implements View.OnClickListener, Vie
         this.setTextSize(30);
         this.setLayoutParams(new TableRow.LayoutParams(
                 350,
-                350,
+                325,
                 1.0f ));
         this.setPadding(0,0,0,0);
 
@@ -76,13 +77,19 @@ public class LongClickButton extends Button implements View.OnClickListener, Vie
      */
     @Override
     public void onClick(View v) {
+
         if(getTypeface().getStyle() == Typeface.BOLD){
             Toast.makeText(context.getApplicationContext(), sub.getName() + " ausgewählt", Toast.LENGTH_SHORT).show();
             setTypeface(Typeface.SANS_SERIF);
+            UserManager.getInstance().addCluntStartSubject();
         }
         else{
             setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+            UserManager.getInstance().removeStartSubject();
         }
+
+        AddSubject acd = (AddSubject) v.getContext();
+        acd.subjectClicked();
     }
 
     /**
