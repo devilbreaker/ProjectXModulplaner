@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AbsoluteLayout android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:background="@drawable/rect_central"
+    android:id="@+id/relativell"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="53dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:id="@+id/lkuerzel"
+            android:layout_x="12dp"
+            android:layout_y="23dp"
+            android:background = "@drawable/solidrect"
+            android:gravity="center" />
+
+        <TextView
+            android:layout_width="271dp"
+            android:layout_height="34dp"
+            android:id="@+id/lmodul"
+            android:layout_x="96dp"
+            android:layout_y="24dp"
+            android:gravity="center" />
+
+        <TextView
+            android:layout_width="251dp"
+            android:layout_height="33dp"
+            android:id="@+id/lbesch"
+            android:layout_x="93dp"
+            android:layout_y="56dp" />
+    </AbsoluteLayout>
