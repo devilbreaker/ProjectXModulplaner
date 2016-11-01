@@ -35,7 +35,8 @@ public class PopUp extends AppCompatActivity {
         profname.setText(intent.getStringExtra("profname"));
         cpsCount.setText(intent.getStringExtra("cpscount"));
 
-        getWindow().setLayout((int )(width*.9), (int) (height*.4));
+        getWindow().setLayout((int )(width*.85), (int) (height*.36));
+
 
     }
 }

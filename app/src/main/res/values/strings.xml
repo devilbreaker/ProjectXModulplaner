@@ -8,4 +8,6 @@
     <string name="title_activity_est_pdf">estPDFAct</string>
     <string name="title_activity_testmterdem">TESTMTERDEM</string>
     <string name="login">Login</string>
+    <string name="default_name">Name</string>
+    <string name="default_semester">Semester</string>
 </resources>

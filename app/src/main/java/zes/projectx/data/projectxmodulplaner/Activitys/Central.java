@@ -70,6 +70,7 @@ public class Central extends AppCompatActivity implements View.OnClickListener {
             button.setLayoutParams(new LinearLayout.LayoutParams(
                     RelativeLayout.LayoutParams.WRAP_CONTENT,
                     RelativeLayout.LayoutParams.WRAP_CONTENT,
+
                     1.0f));
             button.setText(sub.getKuerzel());
             ko.addView(button);
@@ -82,8 +83,8 @@ public class Central extends AppCompatActivity implements View.OnClickListener {
             ko.addView(text);
             text.setText(sub.getName());
             //text.setBackgroundColor(R.color.colorAccent);
-            TextView text2 = new TextView(this);
-            ko.addView(text2);
+            /*TextView text2 = new TextView(this);
+            ko.addView(text2);*/
             ko.setBackgroundColor(getResources().getColor(R.color.colorAccent));
             //text2.setBackgroundColor(R.color.colorAccent);
 

@@ -3,30 +3,20 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Start"
+        android:text="Sign In"
         android:id="@+id/login_activity_startbutton"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="110dp"
         android:onClick="onClick"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/login"
-        android:id="@+id/logintextView"
-        android:textSize="100sp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="50dp" />
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/logintextView"
         android:layout_centerHorizontal="true"
         android:layout_alignBottom="@+id/login_activity_startbutton"
         android:id="@+id/relativeLayout">
@@ -35,36 +25,39 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
-            android:ems="10"
+            android:ems="8"
+            android:textSize="25sp"
             android:id="@+id/nametxt"
-            android:layout_centerHorizontal="true"
-            android:singleLine="false" />
+            android:singleLine="false"
+            android:hint="@string/default_name"
+            android:layout_marginBottom="55dp"
+            android:layout_above="@+id/semestertxt"
+            android:layout_centerHorizontal="true" />
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="number"
-            android:ems="10"
+            android:ems="8"
+            android:textSize="25sp"
             android:id="@+id/semestertxt"
-            android:layout_centerVertical="true"
+            android:hint="@string/default_semester"
+            android:layout_marginBottom="102dp"
+            android:layout_alignParentBottom="true"
             android:layout_alignLeft="@+id/nametxt"
             android:layout_alignStart="@+id/nametxt" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Name:"
-            android:layout_alignParentTop="true"
-            android:layout_alignLeft="@+id/nametxt"
-            android:layout_alignStart="@+id/nametxt" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Semester:"
-            android:layout_alignTop="@+id/semestertxt"
-            android:layout_alignLeft="@+id/semestertxt"
-            android:layout_alignStart="@+id/semestertxt" />
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="ModulPlaner"
+            android:textSize="38sp"
+            android:textStyle="bold"
+            android:id="@+id/textView"
+            android:layout_above="@+id/nametxt"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="33dp" />
     </RelativeLayout>
 
 </RelativeLayout>
