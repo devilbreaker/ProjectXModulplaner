@@ -19,8 +19,8 @@ public class MainActivity extends AppCompatActivity {
 
         //User u = new User("Saif Samir", 5);
         //UserManager manager = new UserManager(u);
-        MainParser p = new MainParser();
+        /*MainParser p = new MainParser();
         p.execute(this.getApplicationContext());
-        finish();
+        finish();*/
     }
 }
