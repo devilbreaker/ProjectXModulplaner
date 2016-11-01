@@ -15,10 +15,9 @@ import zes.projectx.data.projectxmodulplaner.SourceFiles.User;
 import zes.projectx.data.projectxmodulplaner.SourceFiles.UserManager;
 
 /*
-    1-TODO Toast einbauen mit: Bitte geben Sie die Daten vollständig ein !
-    2-TODO
+    TODO-Leiste:
 
-*/
+ */
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
     private EditText name;
     private EditText semester;
@@ -49,8 +48,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             if(name.getText().length()<=0 || name.getText().toString().matches(".*[^a-zA-Z].*") || semester.getText().length() <= 0){
                 Toast.makeText(LoginActivity.this, "Keine vollständige Eingabe", Toast.LENGTH_SHORT).show();
                 name.setText("");
-                name.setHint(R.string.default_name);
                 semester.setText("");
+                name.setHint(R.string.default_name);
                 semester.setHint(R.string.default_semester);
 
             } else {
