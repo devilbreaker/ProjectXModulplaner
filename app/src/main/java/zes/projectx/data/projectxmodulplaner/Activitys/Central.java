@@ -1,9 +1,15 @@
 package zes.projectx.data.projectxmodulplaner.Activitys;
 
 import android.content.Intent;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsoluteLayout;
@@ -18,10 +24,11 @@ import java.security.AccessController;
 import java.util.ArrayList;
 
 import zes.projectx.data.projectxmodulplaner.R;
+import zes.projectx.data.projectxmodulplaner.SourceFiles.Navigator;
 import zes.projectx.data.projectxmodulplaner.SourceFiles.Subject;
 import zes.projectx.data.projectxmodulplaner.SourceFiles.UserManager;
 // TODO Zesshan andere Farbe für den RelativeLayout
-//TODO Saif Navigationsbar einbauen
+//TODO Saif: Größe des Mains in Navogationsbar anpassen über den Layout
 
 // TODO SPECIAL: Suchfunktion für spezielle Fächer + Reload Activity dadurch aktivieren
 
@@ -31,12 +38,26 @@ public class Central extends AppCompatActivity implements View.OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_central);
+        //setContentView(R.layout.activity_central);
 
         manager = UserManager.getInstance();
 
+        setContentView(R.layout.activity_main_nav_layer);
+      //  Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+      //  setSupportActionBar(toolbar);
 
+        View includedLayour = findViewById(R.id.bar_mainlayer);
+        RelativeLayout includedmain = (RelativeLayout) includedLayour.findViewById(R.id.mainlayout);
+        LayoutInflater inflater = LayoutInflater.from(this);
+        inflater.inflate(R.layout.activity_central,includedmain);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+      //  ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+      //          this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+      //  drawer.setDrawerListener(toggle);
+      //  toggle.syncState();
 
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(new Navigator(getApplicationContext(), this, drawer));
         populatelayout();
     }
 
@@ -111,4 +132,23 @@ public class Central extends AppCompatActivity implements View.OnClickListener {
         Intent weiterleitung = new Intent(getApplicationContext(),PopUp.class);
         startActivity(weiterleitung);
     }
+
+
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main_nav_layer, menu);
+        return true;
+    }
+
 }

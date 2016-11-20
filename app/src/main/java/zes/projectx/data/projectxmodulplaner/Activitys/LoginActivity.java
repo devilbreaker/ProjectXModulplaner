@@ -14,10 +14,7 @@ import zes.projectx.data.projectxmodulplaner.SourceFiles.MainParser;
 import zes.projectx.data.projectxmodulplaner.SourceFiles.User;
 import zes.projectx.data.projectxmodulplaner.SourceFiles.UserManager;
 
-/*
-    TODO-Leiste:
 
- */
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
     private EditText name;
     private EditText semester;
