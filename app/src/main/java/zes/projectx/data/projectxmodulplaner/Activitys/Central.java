@@ -32,32 +32,15 @@ import zes.projectx.data.projectxmodulplaner.SourceFiles.UserManager;
 
 // TODO SPECIAL: Suchfunktion für spezielle Fächer + Reload Activity dadurch aktivieren
 
-public class Central extends AppCompatActivity implements View.OnClickListener {
+public class Central extends MainDrawerLayout implements View.OnClickListener {
     private UserManager manager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_central);
 
         manager = UserManager.getInstance();
-
-        setContentView(R.layout.activity_main_nav_layer);
-      //  Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-      //  setSupportActionBar(toolbar);
-
-        View includedLayour = findViewById(R.id.bar_mainlayer);
-        RelativeLayout includedmain = (RelativeLayout) includedLayour.findViewById(R.id.mainlayout);
-        LayoutInflater inflater = LayoutInflater.from(this);
-        inflater.inflate(R.layout.activity_central,includedmain);
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-      //  ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-      //          this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-      //  drawer.setDrawerListener(toggle);
-      //  toggle.syncState();
-
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(new Navigator(getApplicationContext(), this, drawer));
+        this.inflateMyData(R.layout.activity_central);
         populatelayout();
     }
 
@@ -134,15 +117,6 @@ public class Central extends AppCompatActivity implements View.OnClickListener {
     }
 
 
-    @Override
-    public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

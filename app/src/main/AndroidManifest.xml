@@ -33,7 +33,8 @@
         <activity
             android:name=".MainNavLayer"
             android:label="@string/title_activity_main_nav_layer"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Activitys.MainDrawerLayout"></activity>
     </application>
 
 </manifest>

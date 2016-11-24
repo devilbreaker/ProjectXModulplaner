@@ -1,5 +1,8 @@
 package zes.projectx.data.projectxmodulplaner;
 
+//TODO Optimierung des Navigationslayout, sodass wieder der gesamte Layout zu sehn ist, dass included wird
+// TODO einbau eines Symbols oben, dass für das Ziehen des Navigators dienen soll.
+
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
